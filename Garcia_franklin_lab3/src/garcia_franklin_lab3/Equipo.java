@@ -17,7 +17,7 @@ public class Equipo {
 private int palmares;
 private String ciudad;
 private int presupuesto;
-private ArrayList jugadores=new ArrayList();
+private ArrayList <Jugador>jugadores=new ArrayList();
 
     public Equipo() {
     }
