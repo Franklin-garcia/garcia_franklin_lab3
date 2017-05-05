@@ -23,6 +23,7 @@ public class Garcia_franklin_lab3 {
         ArrayList<Jugador> lista_jugadores = new ArrayList();
         ArrayList<Equipo> lista_equipo = new ArrayList();
         ArrayList<Equipo> lista_organizado = new ArrayList();
+        ArrayList<Equipo> lista_suplentes = new ArrayList();
         while (!opcion.equalsIgnoreCase("5")) {
             System.out.println("Ingrese opcion \n"
                     + "1.Operaciones basicas \n"
@@ -602,8 +603,8 @@ public class Garcia_franklin_lab3 {
                         }
                     }
                     lista_jugadores.get(jugador).setNumero(nuevo_numero);
-                    lista_jugadores.get(jugador).setEstado("Numero"); 
-                    lista_jugadores.get(jugador).setEquipo(lista_equipo.get(equipo).getNombre()); 
+                    lista_jugadores.get(jugador).setEstado("Numero");
+                    lista_jugadores.get(jugador).setEquipo(lista_equipo.get(equipo).getNombre());
                     int nuevo_presuspuesto = lista_equipo.get(equipo).getPresupuesto() - lista_jugadores.get(jugador).getPrecio();
                     lista_equipo.get(equipo).setPresupuesto(nuevo_presuspuesto);
 
@@ -634,55 +635,66 @@ public class Garcia_franklin_lab3 {
                     System.out.println("Elije equipo");
                     int pos = lectura.nextInt();
                     int cont = 0, portero, medios, defensas, delanteros;
-                    String op = "";
-                    if (cont <= 10) {
-                        System.out.println("Ingrese jugadores \n"
-                                + "1.Portero \n"
-                                + "2.Defensa \n"
-                                + "3.Medio \n"
-                                + "4.Delantero \n");
-                        op = lectura.next();
-                        switch (op) {
-                            case "1": {
-                                System.out.println("Ingrese numero de defensas");
-                                defensas = lectura.nextInt();
-                                cont += defensas;
-                            }
-                            break;
-                            case "2": {
-                                System.out.println("Ingrese numero de medios");
-                                medios = lectura.nextInt();
-                                cont += medios;
-                            }
-                            break;
-                            case "3": {
-                                System.out.println("Ingrees numero de delanteros");
-                                delanteros = lectura.nextInt();
-                                cont += delanteros;
-                            }
-                            break;
-                        }
-                    } else {
-                        System.out.println("Lista llena");
-                    }
 
+                    System.out.println("Ingrees numero de defensas");
+                    defensas = lectura.nextInt();
+                    System.out.println("Ingrese numero de medios");
+                    medios = lectura.nextInt();
+                    System.out.println("Ingrese numero de delanteros");
+                    delanteros = lectura.nextInt();
+                    cont = 1 + defensas + medios + delanteros;
+                    
+                    int cont_portero = 0, cont_Defensa = 0, cont_Medio = 0, cont_Delantero = 0;
+                    for (Equipo d : lista_equipo) {
+                        for (Object p : d.getJugadores()) {
+                            if (p instanceof Defensa) {
+                                cont_Defensa++;
+                            }
+                            if (p instanceof Medio) {
+                                cont_Medio++;
+                            }
+                            if (p instanceof Delantero) {
+                                cont_Delantero++;
+                            }
+                            if (p instanceof Portero) {
+                                cont_portero++;
+                            }
+                        }
+                    }
+                    while (cont < 11 && cont_portero < 1 && cont_Defensa < defensas && cont_Medio < medios && cont_Delantero < delanteros) {
+                        System.out.println("No hay suficientes jugadores en las posiciones o formacion invalida");
+                        System.out.println("Ingrees numero de defensas");
+                        defensas = lectura.nextInt();
+                        System.out.println("Ingrese numero de medios");
+                        medios = lectura.nextInt();
+                        System.out.println("Ingrese numero de delanteros");
+                        delanteros = lectura.nextInt();
+                        cont = 1 + defensas + medios + delanteros;
+                    }
+                    
                 }
                 break;
                 case "4": {
                     System.out.println("Ingrees opcion \n"
                             + "1.Equipos \n"
                             + "2.Jugadores \n");
-                    int opp=lectura.nextInt();
-                    if (opp==1) {
-                         
-                    }else if(opp==2){
-                        String elementos="";
+                    int opp = lectura.nextInt();
+                    if (opp == 1) {
+
+                        ////////////////
+                    } else if (opp == 2) {
+                        String elementos = "";
                         for (Jugador t : lista_jugadores) {
-                            elementos+="\n"+lista_jugadores.indexOf(t)+" "+t;
+                            elementos += "\n" + lista_jugadores.indexOf(t) + " " + t;
                         }
-                        
+                        for (Equipo r : lista_equipo) {
+                            for (Object p : r.getJugadores()) {
+                                elementos += "\n" + ((Jugador) p);
+                            }
+                        }
+
                         System.out.println(elementos);
-                    }else {
+                    } else {
                         System.out.println("Numero invalido");
                     }
                 }
