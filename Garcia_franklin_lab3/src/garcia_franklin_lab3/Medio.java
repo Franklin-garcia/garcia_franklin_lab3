@@ -13,13 +13,13 @@ public class Medio extends Jugador{
      //Nivel de creatividad, nivel de dominio, promedio de asistencias por partido
     private int creatividad;
     private int domino;
-    private int promedio_asistencias;
+    private double promedio_asistencias;
 
     public Medio() {
         super();
     }
 
-    public Medio(int creatividad, int domino, int promedio_asistencias, String nombre, String apellido, int edad, String estado, String pais, String pie, int numero, int precio, String equipo) {
+    public Medio(int creatividad, int domino, double promedio_asistencias, String nombre, String apellido, int edad, String estado, String pais, String pie, int numero, int precio, String equipo) {
         super(nombre, apellido, edad, estado, pais, pie, numero, precio, equipo);
         this.creatividad = creatividad;
         this.domino = domino;
@@ -42,11 +42,11 @@ public class Medio extends Jugador{
         this.domino = domino;
     }
 
-    public int getPromedio_asistencias() {
+    public double getPromedio_asistencias() {
         return promedio_asistencias;
     }
 
-    public void setPromedio_asistencias(int promedio_asistencias) {
+    public void setPromedio_asistencias(double promedio_asistencias) {
         this.promedio_asistencias = promedio_asistencias;
     }
 
@@ -54,5 +54,6 @@ public class Medio extends Jugador{
     public String toString() {
         return super.toString()+"Medio{" + "creatividad=" + creatividad + ", domino=" + domino + ", promedio_asistencias=" + promedio_asistencias + '}';
     }
+
     
 }

@@ -12,7 +12,7 @@ package garcia_franklin_lab3;
 public class Delantero extends Jugador {
  //Nivel de definición, altura. Velocidad, promedio de goles por partido
     private int definicion;
-    private int altura;
+    private double altura;
     private int velocidad;
     private double promedio_gol;
 
@@ -20,7 +20,7 @@ public class Delantero extends Jugador {
         super();
     }
 
-    public Delantero(int definicion, int altura, int velocidad, double promedio_gol, String nombre, String apellido, int edad, String estado, String pais, String pie, int numero, int precio, String equipo) {
+    public Delantero(int definicion, double altura, int velocidad, double promedio_gol, String nombre, String apellido, int edad, String estado, String pais, String pie, int numero, int precio, String equipo) {
         super(nombre, apellido, edad, estado, pais, pie, numero, precio, equipo);
         this.definicion = definicion;
         this.altura = altura;
@@ -36,11 +36,11 @@ public class Delantero extends Jugador {
         this.definicion = definicion;
     }
 
-    public int getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public void setAltura(int altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 
