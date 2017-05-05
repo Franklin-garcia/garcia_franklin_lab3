@@ -22,13 +22,14 @@ public class Garcia_franklin_lab3 {
         String opcion = "";
         ArrayList<Jugador> lista_jugadores = new ArrayList();
         ArrayList<Equipo> lista_equipo = new ArrayList();
-        while (!opcion.equalsIgnoreCase("e")) {
+        ArrayList<Equipo> lista_organizado = new ArrayList();
+        while (!opcion.equalsIgnoreCase("5")) {
             System.out.println("Ingrese opcion \n"
-                    + "a.Operaciones basicas \n"
-                    + "b.Hacer compras \n"
-                    + "c.Organizar el equipo \n"
-                    + "d.Listar \n"
-                    + "e.Salir \n");
+                    + "1.Operaciones basicas \n"
+                    + "2.Hacer compras \n"
+                    + "3.Organizar el equipo \n"
+                    + "4.Listar \n"
+                    + "5.Salir \n");
             opcion = lectura.next();
             switch (opcion) {
                 case "1": {
@@ -45,7 +46,8 @@ public class Garcia_franklin_lab3 {
                                 while (!agregar.equalsIgnoreCase("3")) {
                                     System.out.println("Ingrese opcion \n"
                                             + "1.Jugadores \n"
-                                            + "2.Equipos \n");
+                                            + "2.Equipos \n"
+                                            + "3.Salir \n");
                                     agregar = lectura.next();
                                     switch (agregar) {
                                         case "1": {
@@ -55,7 +57,8 @@ public class Garcia_franklin_lab3 {
                                                         + "1.Portero \n"
                                                         + "2.Defensa \n"
                                                         + "3.Medio \n"
-                                                        + "4.Delantero \n");
+                                                        + "4.Delantero \n"
+                                                        + "5Salir \n");
                                                 jugadores = lectura.next();
                                                 switch (jugadores) {
                                                     case "1": {
@@ -476,19 +479,32 @@ public class Garcia_franklin_lab3 {
                                             System.out.println(ee);
                                             System.out.println("Ingrese posicion");
                                             int pos = lectura.nextInt();
-                                            System.out.println("Ingrees nombre");
-                                            String nombre = lectura.next();
-                                            System.out.println("Palmares ganados");
-                                            int palmares = lectura.nextInt();
-                                            System.out.println("Ingrees ciudad de origen");
-                                            String ciudad = lectura.next();
-                                            System.out.println("Ingrees presupuesto");
-                                            int presupuesto = lectura.nextInt();
-                                            ((Equipo) lista_equipo.get(pos)).setCiudad(ciudad);
-                                            ((Equipo) lista_equipo.get(pos)).setJugadores(lista_jugadores);
-                                            ((Equipo) lista_equipo.get(pos)).setNombre(nombre);
-                                            ((Equipo) lista_equipo.get(pos)).setPalmares(palmares);
-                                            ((Equipo) lista_equipo.get(pos)).setPresupuesto(presupuesto);
+                                            System.out.println("Ingrese que quiere modificasr \n"
+                                                    + "1.Nombre \n"
+                                                    + "2.Palmares \n"
+                                                    + "3.Ciudad \n"
+                                                    + "4.Presupuesto");
+                                            int iii = lectura.nextInt();
+                                            if (iii == 1) {
+                                                System.out.println("Ingrees nombre");
+                                                String nombre = lectura.next();
+                                                ((Equipo) lista_equipo.get(pos)).setNombre(nombre);
+                                            } else if (iii == 2) {
+                                                System.out.println("Palmares ganados");
+                                                int palmares = lectura.nextInt();
+                                                ((Equipo) lista_equipo.get(pos)).setPalmares(palmares);
+                                            } else if (iii == 3) {
+                                                System.out.println("Ingrees ciudad de origen");
+                                                String ciudad = lectura.next();
+                                                ((Equipo) lista_equipo.get(pos)).setCiudad(ciudad);
+                                            } else if (iii == 4) {
+                                                System.out.println("Ingrees presupuesto");
+                                                int presupuesto = lectura.nextInt();
+                                                ((Equipo) lista_equipo.get(pos)).setPresupuesto(presupuesto);
+                                            } else {
+                                                System.out.println("Numero Invalido");
+                                            }
+
                                             System.out.println("Se modifico con exito");
                                         }
                                         break;
@@ -507,7 +523,7 @@ public class Garcia_franklin_lab3 {
                                         case "1": {
                                             String elementos = "";
                                             for (Jugador j : lista_jugadores) {
-                                                elementos += "\n" + lista_jugadores.indexOf(j + " " + j);
+                                                elementos += "\n" + lista_jugadores.indexOf(j) + " " + j;
                                             }
                                             System.out.println(elementos);
                                             System.out.println("Ingrese posicion a eliminar");
@@ -520,7 +536,7 @@ public class Garcia_franklin_lab3 {
                                         case "2": {
                                             String elementos = "";
                                             for (Equipo e : lista_equipo) {
-                                                elementos += "\n" + lista_equipo.indexOf(e + " " + e);
+                                                elementos += "\n" + lista_equipo.indexOf(e) + " " + e;
                                             }
                                             System.out.println(elementos);
                                             System.out.println("Ingrese posicion a eliminar");
@@ -573,10 +589,21 @@ public class Garcia_franklin_lab3 {
                         System.out.println("Ingrese jugador a comprar");
                         jugador = lectura.nextInt();
                     }
-                    System.out.println("Ingrese el numero que quiere comprar");
+                    System.out.println("Ingrese el numero que quiere asignar");
                     int nuevo_numero = lectura.nextInt();
-                   
-   
+                    for (Equipo r : lista_equipo) {
+                        for (Object p : r.getJugadores()) {
+                            Jugador temp = ((Jugador) p);
+                            while (temp.getNumero() == nuevo_numero) {
+                                System.out.println("Numero invalido");
+                                System.out.println("Ingrese el numero que quiere  asignar");
+                                nuevo_numero = lectura.nextInt();
+                            }
+                        }
+                    }
+                    lista_jugadores.get(jugador).setNumero(nuevo_numero);
+                    lista_jugadores.get(jugador).setEstado("Numero"); 
+                    lista_jugadores.get(jugador).setEquipo(lista_equipo.get(equipo).getNombre()); 
                     int nuevo_presuspuesto = lista_equipo.get(equipo).getPresupuesto() - lista_jugadores.get(jugador).getPrecio();
                     lista_equipo.get(equipo).setPresupuesto(nuevo_presuspuesto);
 
@@ -599,6 +626,45 @@ public class Garcia_franklin_lab3 {
                 }
                 break;
                 case "3": {
+                    String elemento = "";
+                    for (Equipo e : lista_equipo) {
+                        elemento += "\n" + lista_equipo.indexOf(e) + " " + e;
+                    }
+                    System.out.println(elemento);
+                    System.out.println("Elije equipo");
+                    int pos = lectura.nextInt();
+                    int cont = 0, portero, medios, defensas, delanteros;
+                    String op = "";
+                    if (cont <= 10) {
+                        System.out.println("Ingrese jugadores \n"
+                                + "1.Portero \n"
+                                + "2.Defensa \n"
+                                + "3.Medio \n"
+                                + "4.Delantero \n");
+                        op = lectura.next();
+                        switch (op) {
+                            case "1": {
+                                System.out.println("Ingrese numero de defensas");
+                                defensas = lectura.nextInt();
+                                cont += defensas;
+                            }
+                            break;
+                            case "2": {
+                                System.out.println("Ingrese numero de medios");
+                                medios = lectura.nextInt();
+                                cont += medios;
+                            }
+                            break;
+                            case "3": {
+                                System.out.println("Ingrees numero de delanteros");
+                                delanteros = lectura.nextInt();
+                                cont += delanteros;
+                            }
+                            break;
+                        }
+                    } else {
+                        System.out.println("Lista llena");
+                    }
 
                 }
                 break;
