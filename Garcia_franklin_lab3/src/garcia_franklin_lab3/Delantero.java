@@ -10,7 +10,8 @@ package garcia_franklin_lab3;
  * @author Franklin Garcia
  */
 public class Delantero extends Jugador {
- //Nivel de definición, altura. Velocidad, promedio de goles por partido
+    //Nivel de definición, altura. Velocidad, promedio de goles por partido
+
     private int definicion;
     private double altura;
     private int velocidad;
@@ -62,9 +63,7 @@ public class Delantero extends Jugador {
 
     @Override
     public String toString() {
-        return super.toString()+"Delantero{" + "definicion=" + definicion + ", altura=" + altura + ", velocidad=" + velocidad + ", promedio_gol=" + promedio_gol + '}';
+        return super.toString() + "Delantero " + "\n" + "definicion= " + definicion + "\n" + ", altura=" + altura + "\n" + ", velocidad=" + velocidad + "\n" + ", promedio_gol=" + promedio_gol + "\n";
     }
-    
-    
-    
+
 }

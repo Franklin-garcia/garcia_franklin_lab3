@@ -669,7 +669,22 @@ public class Garcia_franklin_lab3 {
                 }
                 break;
                 case "4": {
-
+                    System.out.println("Ingrees opcion \n"
+                            + "1.Equipos \n"
+                            + "2.Jugadores \n");
+                    int opp=lectura.nextInt();
+                    if (opp==1) {
+                         
+                    }else if(opp==2){
+                        String elementos="";
+                        for (Jugador t : lista_jugadores) {
+                            elementos+="\n"+lista_jugadores.indexOf(t)+" "+t;
+                        }
+                        
+                        System.out.println(elementos);
+                    }else {
+                        System.out.println("Numero invalido");
+                    }
                 }
                 break;
             }

@@ -71,7 +71,7 @@ private ArrayList <Jugador>jugadores=new ArrayList();
 
     @Override
     public String toString() {
-        return super.toString()+"Equipo{" + "nombre=" + nombre + ", palmares=" + palmares + ", ciudad=" + ciudad + ", presupuesto=" + presupuesto + ", jugadores=" + jugadores + '}';
+        return super.toString()+"Equipo" +"\n"+ "nombre=" + nombre+"\n" + ", palmares=" + palmares +"\n"+ ", ciudad=" + ciudad +"\n"+ ", presupuesto=" + presupuesto+"\n" + ", jugadores=" + jugadores + "\n";
     }
 
 }
