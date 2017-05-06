@@ -643,7 +643,7 @@ public class Garcia_franklin_lab3 {
                     System.out.println("Ingrese numero de delanteros");
                     delanteros = lectura.nextInt();
                     cont = 1 + defensas + medios + delanteros;
-                    
+
                     int cont_portero = 0, cont_Defensa = 0, cont_Medio = 0, cont_Delantero = 0;
                     for (Equipo d : lista_equipo) {
                         for (Object p : d.getJugadores()) {
@@ -671,6 +671,39 @@ public class Garcia_franklin_lab3 {
                         delanteros = lectura.nextInt();
                         cont = 1 + defensas + medios + delanteros;
                     }
+                    String elementos = "";
+                    for (Object p : lista_equipo.get(pos).getJugadores()) {
+                        elementos += "\n" + ((Jugador) p) + " ";
+                    }
+                    System.out.println("Ingrese Jugadores");
+                    int cont_portero2 = 0, cont_Defensa2 = 0, cont_Medio2 = 0, cont_Delantero2 = 0;
+                    int por,def,med,del;
+                    
+                    while(cont_portero2<=1){
+                        System.out.println("Ingreese psicion del portero");
+                        por=lectura.nextInt();
+                        lista_organizado.add((Equipo) lista_equipo.get(pos).getJugadores().get(por));
+                        cont_portero2++; 
+                    }
+                    while(cont_Defensa2<=defensas){
+                        System.out.println("Ingrese posicion de los defensas");
+                        def=lectura.nextInt();
+                        lista_organizado.add((Equipo) lista_equipo.get(pos).getJugadores().get(def));
+                        cont_Defensa2++;
+                    }
+                    while(cont_Medio2<=medios){
+                        System.out.println("Ingrese posicion de medios");
+                        med=lectura.nextInt();
+                        lista_organizado.add((Equipo) lista_equipo.get(pos).getJugadores().get(med));
+                        cont_Medio2++;
+                    }
+                    while(cont_Delantero2<=delanteros){
+                        System.out.println("Ingrese posicion de Delanteros");
+                        del=lectura.nextInt();
+                        lista_organizado.add((Equipo) lista_equipo.get(pos).getJugadores().get(del));
+                        cont_Delantero2++;
+                    }
+                    System.out.println("Equipo armado");
                     
                 }
                 break;
@@ -680,6 +713,10 @@ public class Garcia_franklin_lab3 {
                             + "2.Jugadores \n");
                     int opp = lectura.nextInt();
                     if (opp == 1) {
+                        String todos = "";
+                        for (Equipo l : lista_equipo) {
+                            todos += "\n" + lista_equipo.indexOf(l) + " " + l;
+                        }
 
                         ////////////////
                     } else if (opp == 2) {
